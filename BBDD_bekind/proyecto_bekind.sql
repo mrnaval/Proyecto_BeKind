@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-05-2020 a las 14:11:25
+-- Tiempo de generación: 28-05-2020 a las 16:19:03
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.3
+-- Versión de PHP: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -56,6 +55,13 @@ CREATE TABLE `clientes` (
   `contraseña` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`nombre`, `apellidos`, `dni`, `email`, `telefono`, `dirección`, `contraseña`) VALUES
+('Lauren', 'Ciucan', 'l12345678', 'laurentiuciucan@hotmail.es', 666666666, 'ASMRR', '123456');
+
 -- --------------------------------------------------------
 
 --
@@ -77,7 +83,7 @@ CREATE TABLE `servicio` (
 
 CREATE TABLE `solicita` (
   `dni_clientes` varchar(9) NOT NULL,
-  `codigo_servicios` varchar(9) NOT NULL
+  `codigo servicio` varchar(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -106,8 +112,8 @@ ALTER TABLE `servicio`
 -- Indices de la tabla `solicita`
 --
 ALTER TABLE `solicita`
-  ADD PRIMARY KEY (`dni_clientes`,`codigo_servicios`),
-  ADD KEY `codigo_servicios` (`codigo_servicios`);
+  ADD PRIMARY KEY (`dni_clientes`,`codigo servicio`),
+  ADD KEY `codigo servicio` (`codigo servicio`);
 
 --
 -- Restricciones para tablas volcadas
@@ -120,16 +126,11 @@ ALTER TABLE `ayudantes`
   ADD CONSTRAINT `ayudantes_ibfk_1` FOREIGN KEY (`dni`) REFERENCES `servicio` (`codigo`);
 
 --
--- Filtros para la tabla `clientes`
---
-ALTER TABLE `clientes`
-  ADD CONSTRAINT `clientes_ibfk_1` FOREIGN KEY (`dni`) REFERENCES `solicita` (`dni_clientes`);
-
---
 -- Filtros para la tabla `solicita`
 --
 ALTER TABLE `solicita`
-  ADD CONSTRAINT `solicita_ibfk_1` FOREIGN KEY (`codigo_servicios`) REFERENCES `servicio` (`codigo`);
+  ADD CONSTRAINT `solicita_ibfk_1` FOREIGN KEY (`codigo servicio`) REFERENCES `servicio` (`codigo`),
+  ADD CONSTRAINT `solicita_ibfk_2` FOREIGN KEY (`dni_clientes`) REFERENCES `clientes` (`dni`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
