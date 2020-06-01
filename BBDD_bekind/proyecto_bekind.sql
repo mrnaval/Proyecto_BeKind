@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-05-2020 a las 16:19:03
+-- Tiempo de generación: 01-06-2020 a las 17:38:18
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -30,14 +30,22 @@ USE `proyecto_bekind`;
 --
 
 CREATE TABLE `ayudantes` (
+  `id` int(11) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `dni` varchar(9) NOT NULL,
   `nombre` varchar(25) NOT NULL,
   `apellidos` varchar(25) NOT NULL,
-  `dni` varchar(9) NOT NULL,
-  `email` varchar(30) NOT NULL,
   `telefono` int(11) NOT NULL,
   `direccion` varchar(40) NOT NULL,
   `contraseña` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `ayudantes`
+--
+
+INSERT INTO `ayudantes` (`id`, `email`, `dni`, `nombre`, `apellidos`, `telefono`, `direccion`, `contraseña`) VALUES
+(1, '', 'l12345678', 'Lauren', 'Ciucan', 666666666, 'dfb', '123456');
 
 -- --------------------------------------------------------
 
@@ -46,21 +54,21 @@ CREATE TABLE `ayudantes` (
 --
 
 CREATE TABLE `clientes` (
+  `email` varchar(30) NOT NULL,
   `nombre` varchar(25) NOT NULL,
   `apellidos` varchar(25) NOT NULL,
-  `dni` varchar(9) NOT NULL,
-  `email` varchar(30) NOT NULL,
   `telefono` int(11) NOT NULL,
-  `dirección` varchar(40) NOT NULL,
-  `contraseña` varchar(20) NOT NULL
+  `direccion` varchar(40) NOT NULL,
+  `contraseña` varchar(20) NOT NULL,
+  `dni` varchar(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `clientes`
 --
 
-INSERT INTO `clientes` (`nombre`, `apellidos`, `dni`, `email`, `telefono`, `dirección`, `contraseña`) VALUES
-('Lauren', 'Ciucan', 'l12345678', 'laurentiuciucan@hotmail.es', 666666666, 'ASMRR', '123456');
+INSERT INTO `clientes` (`email`, `nombre`, `apellidos`, `telefono`, `direccion`, `contraseña`, `dni`) VALUES
+('laurentiuciucan@hotmail.es', 'Lauren', 'Ciucan', 77777777, 'ASMR', '123456', 'i12345678');
 
 -- --------------------------------------------------------
 
@@ -69,11 +77,20 @@ INSERT INTO `clientes` (`nombre`, `apellidos`, `dni`, `email`, `telefono`, `dire
 --
 
 CREATE TABLE `servicio` (
-  `codigo` varchar(9) NOT NULL,
   `punto_recogida` varchar(30) NOT NULL,
   `destino` varchar(30) NOT NULL,
-  `hora` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `hora` time NOT NULL DEFAULT current_timestamp(),
+  `id` int(11) NOT NULL,
+  `email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `servicio`
+--
+
+INSERT INTO `servicio` (`punto_recogida`, `destino`, `hora`, `id`, `email`) VALUES
+('Valencia', 'Alcira', '12:45:00', 9, 'laurentiuciucan@hotmail.es'),
+('Alcudia', 'Carlet', '05:34:00', 10, 'laurentiuciucan@hotmail.es');
 
 -- --------------------------------------------------------
 
@@ -82,8 +99,8 @@ CREATE TABLE `servicio` (
 --
 
 CREATE TABLE `solicita` (
-  `dni_clientes` varchar(9) NOT NULL,
-  `codigo servicio` varchar(9) NOT NULL
+  `id_ayudantes` int(11) NOT NULL,
+  `id_servicio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -94,43 +111,60 @@ CREATE TABLE `solicita` (
 -- Indices de la tabla `ayudantes`
 --
 ALTER TABLE `ayudantes`
-  ADD PRIMARY KEY (`dni`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  ADD PRIMARY KEY (`dni`);
+  ADD PRIMARY KEY (`email`);
 
 --
 -- Indices de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  ADD PRIMARY KEY (`codigo`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `email` (`email`);
 
 --
 -- Indices de la tabla `solicita`
 --
 ALTER TABLE `solicita`
-  ADD PRIMARY KEY (`dni_clientes`,`codigo servicio`),
-  ADD KEY `codigo servicio` (`codigo servicio`);
+  ADD PRIMARY KEY (`id_ayudantes`,`id_servicio`),
+  ADD KEY `id_servicio` (`id_servicio`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `ayudantes`
+--
+ALTER TABLE `ayudantes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `servicio`
+--
+ALTER TABLE `servicio`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `ayudantes`
+-- Filtros para la tabla `servicio`
 --
-ALTER TABLE `ayudantes`
-  ADD CONSTRAINT `ayudantes_ibfk_1` FOREIGN KEY (`dni`) REFERENCES `servicio` (`codigo`);
+ALTER TABLE `servicio`
+  ADD CONSTRAINT `servicio_ibfk_1` FOREIGN KEY (`email`) REFERENCES `clientes` (`email`);
 
 --
 -- Filtros para la tabla `solicita`
 --
 ALTER TABLE `solicita`
-  ADD CONSTRAINT `solicita_ibfk_1` FOREIGN KEY (`codigo servicio`) REFERENCES `servicio` (`codigo`),
-  ADD CONSTRAINT `solicita_ibfk_2` FOREIGN KEY (`dni_clientes`) REFERENCES `clientes` (`dni`);
+  ADD CONSTRAINT `solicita_ibfk_2` FOREIGN KEY (`id_servicio`) REFERENCES `servicio` (`id`),
+  ADD CONSTRAINT `solicita_ibfk_3` FOREIGN KEY (`id_ayudantes`) REFERENCES `ayudantes` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
