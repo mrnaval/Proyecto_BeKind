@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2020 a las 17:38:18
+-- Tiempo de generación: 02-06-2020 a las 14:38:25
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -68,7 +68,9 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`email`, `nombre`, `apellidos`, `telefono`, `direccion`, `contraseña`, `dni`) VALUES
-('laurentiuciucan@hotmail.es', 'Lauren', 'Ciucan', 77777777, 'ASMR', '123456', 'i12345678');
+('laurentiuciucan@hotmail.es', 'Lauren', 'Ciucan', 77777777, 'ASMR', '123456', 'i12345678'),
+('navalet@gmail.com', 'Marc', 'naval', 123412, 'si', '123456', 'i875234'),
+('pablete@gamil.com', 'Pablo', 'Langa', 56758697, 'ASMR', '123456', 'x12345678');
 
 -- --------------------------------------------------------
 
@@ -81,16 +83,17 @@ CREATE TABLE `servicio` (
   `destino` varchar(30) NOT NULL,
   `hora` time NOT NULL DEFAULT current_timestamp(),
   `id` int(11) NOT NULL,
-  `email` varchar(30) NOT NULL
+  `email` varchar(30) NOT NULL,
+  `tipo` varchar(15) NOT NULL,
+  `aceptada` varchar(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `servicio`
 --
 
-INSERT INTO `servicio` (`punto_recogida`, `destino`, `hora`, `id`, `email`) VALUES
-('Valencia', 'Alcira', '12:45:00', 9, 'laurentiuciucan@hotmail.es'),
-('Alcudia', 'Carlet', '05:34:00', 10, 'laurentiuciucan@hotmail.es');
+INSERT INTO `servicio` (`punto_recogida`, `destino`, `hora`, `id`, `email`, `tipo`, `aceptada`) VALUES
+('madrid', 'valencia', '01:03:00', 16, 'navalet@gmail.com', 'Transporte', 'false');
 
 -- --------------------------------------------------------
 
@@ -147,7 +150,7 @@ ALTER TABLE `ayudantes`
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restricciones para tablas volcadas
