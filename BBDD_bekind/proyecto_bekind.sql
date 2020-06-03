@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-06-2020 a las 14:38:25
+-- Tiempo de generación: 03-06-2020 a las 18:21:23
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -36,16 +36,18 @@ CREATE TABLE `ayudantes` (
   `nombre` varchar(25) NOT NULL,
   `apellidos` varchar(25) NOT NULL,
   `telefono` int(11) NOT NULL,
-  `direccion` varchar(40) NOT NULL,
-  `contraseña` varchar(20) NOT NULL
+  `direccion` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `ayudantes`
 --
 
-INSERT INTO `ayudantes` (`id`, `email`, `dni`, `nombre`, `apellidos`, `telefono`, `direccion`, `contraseña`) VALUES
-(1, '', 'l12345678', 'Lauren', 'Ciucan', 666666666, 'dfb', '123456');
+INSERT INTO `ayudantes` (`id`, `email`, `dni`, `nombre`, `apellidos`, `telefono`, `direccion`) VALUES
+(1, '', 'l12345678', 'Lauren', 'Ciucan', 666666666, 'dfb'),
+(3, 'navalet@gmail.com', 'i875234', 'Marc', 'naval', 123412, 'si'),
+(4, 'pablete@gamil.com', 'x12345678', 'Pablo', 'Langa', 56758697, 'ASMR'),
+(5, 'alex@gmail.com', 'i456678', 'alex', 'Nose', 88888888, 'ASMR');
 
 -- --------------------------------------------------------
 
@@ -68,6 +70,7 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`email`, `nombre`, `apellidos`, `telefono`, `direccion`, `contraseña`, `dni`) VALUES
+('alex@gmail.com', 'alex', 'Nose', 88888888, 'ASMR', '123456', 'i456678'),
 ('laurentiuciucan@hotmail.es', 'Lauren', 'Ciucan', 77777777, 'ASMR', '123456', 'i12345678'),
 ('navalet@gmail.com', 'Marc', 'naval', 123412, 'si', '123456', 'i875234'),
 ('pablete@gamil.com', 'Pablo', 'Langa', 56758697, 'ASMR', '123456', 'x12345678');
@@ -84,6 +87,7 @@ CREATE TABLE `servicio` (
   `hora` time NOT NULL DEFAULT current_timestamp(),
   `id` int(11) NOT NULL,
   `email` varchar(30) NOT NULL,
+  `EmailAceptado` varchar(30) DEFAULT NULL,
   `tipo` varchar(15) NOT NULL,
   `aceptada` varchar(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -92,8 +96,14 @@ CREATE TABLE `servicio` (
 -- Volcado de datos para la tabla `servicio`
 --
 
-INSERT INTO `servicio` (`punto_recogida`, `destino`, `hora`, `id`, `email`, `tipo`, `aceptada`) VALUES
-('madrid', 'valencia', '01:03:00', 16, 'navalet@gmail.com', 'Transporte', 'false');
+INSERT INTO `servicio` (`punto_recogida`, `destino`, `hora`, `id`, `email`, `EmailAceptado`, `tipo`, `aceptada`) VALUES
+('Si', 'prueba', '21:03:00', 17, 'pablete@gamil.com', NULL, 'Transporte', '0'),
+('hola', 'que tal', '04:06:00', 18, 'pablete@gamil.com', 'navalet@gmail.com', 'Transporte', '1'),
+('massa', 'no', '00:00:20', 19, 'navalet@gmail.com', NULL, 'Transporte', '0'),
+('asdfdafh', 'adfhdh', '12:56:00', 20, 'navalet@gmail.com', 'alex@gmail.com', 'Transporte', '1'),
+('sgds', 'sdhsdfh', '12:45:00', 21, 'navalet@gmail.com', NULL, 'Transporte', '0'),
+('agaw', 'shgsf', '12:34:00', 22, 'navalet@gmail.com', 'navalet@gmail.com', 'Transporte', '1'),
+('asmr', 'asmr', '05:34:00', 23, 'alex@gmail.com', NULL, 'Transporte', '0');
 
 -- --------------------------------------------------------
 
@@ -144,13 +154,13 @@ ALTER TABLE `solicita`
 -- AUTO_INCREMENT de la tabla `ayudantes`
 --
 ALTER TABLE `ayudantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Restricciones para tablas volcadas
