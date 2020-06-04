@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-06-2020 a las 18:21:23
+-- Tiempo de generación: 04-06-2020 a las 08:45:59
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -97,13 +97,15 @@ CREATE TABLE `servicio` (
 --
 
 INSERT INTO `servicio` (`punto_recogida`, `destino`, `hora`, `id`, `email`, `EmailAceptado`, `tipo`, `aceptada`) VALUES
-('Si', 'prueba', '21:03:00', 17, 'pablete@gamil.com', NULL, 'Transporte', '0'),
+('Si', 'prueba', '21:03:00', 17, 'pablete@gamil.com', 'navalet@gmail.com', 'Transporte', '1'),
 ('hola', 'que tal', '04:06:00', 18, 'pablete@gamil.com', 'navalet@gmail.com', 'Transporte', '1'),
 ('massa', 'no', '00:00:20', 19, 'navalet@gmail.com', NULL, 'Transporte', '0'),
 ('asdfdafh', 'adfhdh', '12:56:00', 20, 'navalet@gmail.com', 'alex@gmail.com', 'Transporte', '1'),
 ('sgds', 'sdhsdfh', '12:45:00', 21, 'navalet@gmail.com', NULL, 'Transporte', '0'),
 ('agaw', 'shgsf', '12:34:00', 22, 'navalet@gmail.com', 'navalet@gmail.com', 'Transporte', '1'),
-('asmr', 'asmr', '05:34:00', 23, 'alex@gmail.com', NULL, 'Transporte', '0');
+('asmr', 'asmr', '05:34:00', 23, 'alex@gmail.com', NULL, 'Transporte', '0'),
+('EEEEYYYY', 'NOOOO', '06:45:00', 24, 'navalet@gmail.com', 'navalet@gmail.com', 'Transporte', '1'),
+('lalcudia', 'alcira', '01:34:00', 25, 'navalet@gmail.com', 'navalet@gmail.com', 'Transporte', '1');
 
 -- --------------------------------------------------------
 
@@ -160,7 +162,7 @@ ALTER TABLE `ayudantes`
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- Restricciones para tablas volcadas
