@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-06-2020 a las 08:45:59
+-- Tiempo de generación: 05-06-2020 a las 13:29:25
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -47,7 +47,8 @@ INSERT INTO `ayudantes` (`id`, `email`, `dni`, `nombre`, `apellidos`, `telefono`
 (1, '', 'l12345678', 'Lauren', 'Ciucan', 666666666, 'dfb'),
 (3, 'navalet@gmail.com', 'i875234', 'Marc', 'naval', 123412, 'si'),
 (4, 'pablete@gamil.com', 'x12345678', 'Pablo', 'Langa', 56758697, 'ASMR'),
-(5, 'alex@gmail.com', 'i456678', 'alex', 'Nose', 88888888, 'ASMR');
+(5, 'alex@gmail.com', 'i456678', 'alex', 'Nose', 88888888, 'ASMR'),
+(6, 'w@gmail.com', 'w', 'w', 'w', 4, 'w');
 
 -- --------------------------------------------------------
 
@@ -73,7 +74,8 @@ INSERT INTO `clientes` (`email`, `nombre`, `apellidos`, `telefono`, `direccion`,
 ('alex@gmail.com', 'alex', 'Nose', 88888888, 'ASMR', '123456', 'i456678'),
 ('laurentiuciucan@hotmail.es', 'Lauren', 'Ciucan', 77777777, 'ASMR', '123456', 'i12345678'),
 ('navalet@gmail.com', 'Marc', 'naval', 123412, 'si', '123456', 'i875234'),
-('pablete@gamil.com', 'Pablo', 'Langa', 56758697, 'ASMR', '123456', 'x12345678');
+('pablete@gamil.com', 'Pablo', 'Langa', 56758697, 'ASMR', '123456', 'x12345678'),
+('w@gmail.com', 'w', 'w', 4, 'w', 'w', 'w');
 
 -- --------------------------------------------------------
 
@@ -97,15 +99,11 @@ CREATE TABLE `servicio` (
 --
 
 INSERT INTO `servicio` (`punto_recogida`, `destino`, `hora`, `id`, `email`, `EmailAceptado`, `tipo`, `aceptada`) VALUES
-('Si', 'prueba', '21:03:00', 17, 'pablete@gamil.com', 'navalet@gmail.com', 'Transporte', '1'),
-('hola', 'que tal', '04:06:00', 18, 'pablete@gamil.com', 'navalet@gmail.com', 'Transporte', '1'),
-('massa', 'no', '00:00:20', 19, 'navalet@gmail.com', NULL, 'Transporte', '0'),
-('asdfdafh', 'adfhdh', '12:56:00', 20, 'navalet@gmail.com', 'alex@gmail.com', 'Transporte', '1'),
-('sgds', 'sdhsdfh', '12:45:00', 21, 'navalet@gmail.com', NULL, 'Transporte', '0'),
-('agaw', 'shgsf', '12:34:00', 22, 'navalet@gmail.com', 'navalet@gmail.com', 'Transporte', '1'),
-('asmr', 'asmr', '05:34:00', 23, 'alex@gmail.com', NULL, 'Transporte', '0'),
-('EEEEYYYY', 'NOOOO', '06:45:00', 24, 'navalet@gmail.com', 'navalet@gmail.com', 'Transporte', '1'),
-('lalcudia', 'alcira', '01:34:00', 25, 'navalet@gmail.com', 'navalet@gmail.com', 'Transporte', '1');
+('Alcira c/Colmenar pt:20', 'Alcira Hospital', '12:34:00', 28, 'navalet@gmail.com', NULL, 'Transporte', '0'),
+('Alcudia c/ Ausias March nº40', 'Alcira Hospital', '04:23:00', 29, 'navalet@gmail.com', NULL, 'Transporte', '0'),
+('Alcudia c/Ausias MArch nº 12 ', 'Valencia AV del Puerto', '05:03:00', 30, 'laurentiuciucan@hotmail.es', NULL, 'Transporte', '0'),
+('Carcaixent c/La Pau nº10', 'Valencia AV del Puerto', '02:34:00', 31, 'pablete@gamil.com', NULL, 'Transporte', '0'),
+('Alzira c/Reyes Católicos nº 7', 'Valencia c/Colón', '13:06:00', 32, 'navalet@gmail.com', NULL, 'Transporte', '0');
 
 -- --------------------------------------------------------
 
@@ -156,13 +154,13 @@ ALTER TABLE `solicita`
 -- AUTO_INCREMENT de la tabla `ayudantes`
 --
 ALTER TABLE `ayudantes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- Restricciones para tablas volcadas
