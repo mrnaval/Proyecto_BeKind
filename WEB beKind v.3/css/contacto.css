@@ -1,0 +1,98 @@
+*{
+	font-family: 'Balsamiq Sans', cursive;
+}
+
+body {
+text-align: left;
+background-color: #FFFFFF;
+}
+
+.agrupar {
+width: 920px;
+margin: 15px auto;
+}
+
+.logo{
+  text-align: center;
+}
+
+.formulario{
+float: right;
+width: 550px;
+background-color: #7cc3ac;
+color: white ;
+}
+
+.informacion{
+width: 350px;
+background-color: #262626;
+color: #ffffff;
+margin-top: 15px;
+}
+
+article {
+padding: 20px;
+box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+text-align: center;
+font-size: 30px;
+font-style:italic;
+}
+
+#subtitulo {
+text-align: center;
+font-style:italic;
+}
+
+h3,ul {
+font-style:italic;
+}
+
+nav {
+margin-top: 10px;
+padding: 24px;
+text-align: center;
+box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+#nav {
+background: #7cc3ac;
+margin-bottom: 15px;
+}
+
+.link {
+transition: 0.3s ease;
+background: #7cc3ac;
+color: #ffffff;
+font-size: 20px;
+text-decoration: none;
+border-top: 4px solid #7cc3ac;
+border-bottom: 4px solid #7cc3ac;
+padding: 20px 0;
+margin: 0 100px;
+}
+
+.link:hover {
+border-top: 4px solid #ffffff;
+border-bottom: 4px solid #ffffff;
+padding: 6px 0;
+}
+
+footer {
+float: right;
+text-align: center;
+margin-top: -430px;
+margin-right: 80px;
+}
+
+#pie {
+color:#262626;
+font-style: italic;
+}
+
+.si {
+color: white;
+margin-left: 20px;
+}
